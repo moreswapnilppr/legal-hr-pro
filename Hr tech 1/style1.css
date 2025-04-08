@@ -1,0 +1,340 @@
+/* Law Firm Theme Colors */
+:root {
+    --primary: #2c3e50;
+    --secondary: #34495e;
+    --accent: #c0392b;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --text: #333333;
+    --border: #bdc3c7;
+    --card-bg: #ffffff;
+    --hover: #3a506b;
+}
+
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: #f5f7fa;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo h2 {
+    color: var(--light);
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--hover);
+}
+
+nav ul li a.active {
+    background-color: var(--accent);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    color: var(--light);
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+h2 {
+    color: var(--primary);
+    margin: 1.5rem 0 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Summary Stats */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--accent);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.5rem 0;
+}
+
+.stat-trend {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-trend.positive {
+    color: var(--success);
+}
+
+.stat-trend.negative {
+    color: var(--danger);
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid var(--accent);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quick-stats {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.quick-stats li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--secondary);
+}
+
+.quick-stats li:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #a93226;
+}
+
+/* Recent Activities */
+.recent-activities {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activity-list {
+    list-style: none;
+}
+
+.activity-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.activity-list li:last-child {
+    border-bottom: none;
+}
+
+.activity-time {
+    font-weight: 600;
+    color: var(--secondary);
+    min-width: 150px;
+    margin-right: 1rem;
+}
+
+.activity-text {
+    color: var(--text);
+}
+
+/* Practice Area Performance */
+.practice-areas {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.practice-chart {
+    margin-top: 1.5rem;
+}
+
+.practice-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.practice-name {
+    width: 180px;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.practice-bar {
+    flex-grow: 1;
+    height: 12px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    margin: 0 1rem;
+    overflow: hidden;
+}
+
+.practice-fill {
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: 6px;
+}
+
+.practice-value {
+    width: 50px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary);
+    color: var(--light);
+    margin-top: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    nav ul {
+        margin: 1rem 0;
+    }
+    
+    .user-profile {
+        margin-top: 1rem;
+    }
+    
+    .summary-stats,
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-time {
+        min-width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+    }
+}

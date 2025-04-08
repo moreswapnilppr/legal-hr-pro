@@ -1,0 +1,218 @@
+/* Modern Look CSS for Law Firm HR Application */
+
+:root {
+    --primary: #1e293b; /* Dark Blue */
+    --secondary: #64748b; /* Grayish Blue */
+    --accent: #0ea5e9; /* Sky Blue */
+    --light: #f8fafc; /* Light Gray */
+    --dark: #0f172a; /* Navy Blue */
+    --success: #22c55e; /* Green */
+    --warning: #facc15; /* Yellow */
+    --danger: #ef4444; /* Red */
+    --text: #334155; /* Dark Gray */
+    --border: #e2e8f0; /* Light Border */
+    --card-bg: #ffffff; /* White */
+    --hover: #0284c7; /* Hover Blue */
+}
+
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--light);
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--light);
+}
+
+nav .logo h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--hover);
+}
+
+nav ul li a.active {
+    background-color: var(--accent);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    color: var(--light);
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+h2 {
+    color: var(--primary);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+/* Summary Stats */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--accent);
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.5rem 0;
+}
+
+.stat-trend {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-trend.positive {
+    color: var(--success);
+}
+
+.stat-trend.negative {
+    color: var(--danger);
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid var(--accent);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quick-stats {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.quick-stats li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--secondary);
+}
+
+.quick-stats li:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--hover);
+    transform: translateY(-2px);
+}
