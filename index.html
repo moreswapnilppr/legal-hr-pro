@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Interior Design Firm Application</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+            margin-top: 0;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 12px;
+            margin-right: 5px;
+        }
+
+        .badge-blue { background: #e7f5ff; color: #1c7ed6; }
+        .badge-green { background: #e6f8e6; color: #2b8a3e; }
+        .badge-orange { background: #fff3e0; color: #e8590c; }
+        .badge-purple { background: #f3e5f5; color: #9c27b0; }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            margin: 0 10px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .status {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .status-green { background-color: #2b8a3e; }
+        .status-red { background-color: #e03131; }
+        .status-orange { background-color: #f76707; }
+
+        /* Login / Onboarding */
+        #login-onboarding {
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        #login-onboarding form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        #login-onboarding input, 
+        #login-onboarding button,
+        #login-onboarding select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #login-onboarding div {
+            margin-top: 20px;
+        }
+
+        /* HR/Admin Dashboard */
+        #hr-admin-dashboard nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        #hr-admin-dashboard nav ul li {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #hr-admin-dashboard nav ul li:hover {
+            background: #0056b3;
+        }
+
+        /* Talent Pool */
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Project Assignment */
+        #project-assignment form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .team-suggestion {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .milestone {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        /* Designer/Contractor Dashboard */
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+        }
+
+        .project-card .deadline {
+            color: #e03131;
+            font-weight: 500;
+        }
+
+        /* Contract & Compliance */
+        .document-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Payments */
+        .invoice-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .invoice-card .amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        /* Performance Management */
+        .performance-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .performance-meter {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .performance-value {
+            height: 100%;
+            background: #007bff;
+        }
+
+        /* Training & Development */
+        .training-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Communication & Culture */
+        .chat-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+        }
+
+        .chat-sender {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .chat-bubble {
+            background: #f1f3f5;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        .chat-self .chat-bubble {
+            background: #e7f5ff;
+            float: right;
+        }
+
+        .chat-self {
+            text-align: right;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login / Onboarding -->
+    <section id='login-onboarding'>
+        <h1>Login / Sign Up</h1>
+        <form>
+            <input type='text' placeholder='Username' value="sarah.johnson">
+            <input type='password' placeholder='Password' value="••••••••••">
+            <button type='submit' class="btn btn-primary">Login</button>
+        </form>
+        <div>
+            <h2>Role Selection</h2>
+            <select>
+                <option>HR</option>
+                <option selected>Designer</option>
+                <option>PM</option>
+                <option>Contractor</option>
+            </select>
+        </div>
+        <div>
+            <h2>Profile Creation</h2>
+            <input type='text' placeholder='Skills' value="Interior styling, 3D modeling, Color theory">
+            <input type='text' placeholder='Portfolio' value="https://portfolio.sarahjohnson.com">
+            <input type='text' placeholder='Certifications' value="NCIDQ, LEED AP">
+        </div>
+        <div>
+            <h2>NDA and Compliance</h2>
+            <input type='file'>
+            <p>Previously uploaded: <strong>ComplianceDoc_2025.pdf</strong></p>
+        </div>
+    </section>
+
+    <!-- HR/Admin Dashboard -->
+    <section id='hr-admin-dashboard'>
+        <h1>HR/Admin Dashboard</h1>
+        <div class="stats-container">
+            <div class="stat-card" style="background-color: #e7f5ff;">
+                <p>Active Staff</p>
+                <h3>42</h3>
+            </div>
+            <div class="stat-card" style="background-color: #e6fcf5;">
+                <p>Ongoing Projects</p>
+                <h3>18</h3>
+            </div>
+            <div class="stat-card" style="background-color: #fff3bf;">
+                <p>Pending Payments</p>
+                <h3>$32.5k</h3>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>Talent Pool</li>
+                <li>Projects</li>
+                <li>Contracts</li>
+                <li>Payments</li>
+                <li>Performance</li>
+                <li>Training</li>
+                <li>Communication</li>
+            </ul>
+        </nav>
+        <div class="card">
+            <h2>Recent Activities</h2>
+            <p><strong>Today</strong> - New designer onboarded: Maria Chen</p>
+            <p><strong>Yesterday</strong> - Project "Oceanview Residence" completed</p>
+            <p><strong>Apr 11</strong> - 3 invoices approved for payment</p>
+            <p><strong>Apr 10</strong> - New client meeting scheduled: Central Park Condo</p>
+        </div>
+    </section>
+
+    <!-- Talent Pool -->
+    <section id='talent-pool'>
+        <h1>Talent Pool</h1>
+        <div class="search-bar">
+            <input type='text' placeholder='Filter designers/contractors' value="Modern, 5+ years">
+            <button class="btn btn-success">Search</button>
+        </div>
+        
+        <h2>Designer Profiles</h2>
+        
+        <div class="profile-card">
+            <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
+            <div style="flex: 1;">
+                <h3>Michael Torres</h3>
+                <div>
+                    <span class="badge badge-blue">Modern</span>
+                    <span class="badge badge-green">Minimalist</span>
+                    <span class="badge badge-orange">Sustainable</span>
+                </div>
+                <div>8 years experience | <span class="rating">★★★★★</span></div>
+            </div>
+            <button class="btn btn-primary">View Profile</button>
+        </div>
+        
+        <div class="profile-card">
+            <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
+            <div style="flex: 1;">
+                <h3>Lisa Chen</h3>
+                <div>
+                    <span class="badge badge-blue">Contemporary</span>
+                    <span class="badge badge-purple">Scandinavian</span>
+                    <span class="badge badge-green">Eco-friendly</span>
+                </div>
+                <div>6 years experience | <span class="rating">★★★★☆</span></div>
+            </div>
+            <button class="btn btn-primary">View Profile</button>
+        </div>
+        
+        <div class="profile-card">
+            <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/men/75.jpg');"></div>
+            <div style="flex: 1;">
+                <h3>James Wilson</h3>
+                <div>
+                    <span class="badge badge-orange">Industrial</span>
+                    <span class="badge badge-blue">Modern</span>
+                    <span class="badge badge-purple">Urban</span>
+                </div>
+                <div>5 years experience | <span class="rating">★★★★☆</span></div>
+            </div>
+            <button class="btn btn-primary">View Profile</button>
+        </div>
+        
+        <button class="btn btn-success" style="margin-top: 15px;">Add New Designer/Contractor</button>
+    </section>
+
+    <!-- Project Assignment -->
+    <section id='project-assignment'>
+        <h1>Project Assignment</h1>
+        <form>
+            <input type='text' placeholder='Project Name' value="Lakeside Villa Renovation">
+            <input type='text' placeholder='Roles and Required Skills' value="Lead Designer (Modern, Luxury), Junior Designer, Project Coordinator">
+            <button class="btn btn-warning">Create Project</button>
+        </form>
+        
+        <h2>AI-based Resource Suggestions</h2>
+        
+        <div class="team-suggestion">
+            <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
+            <div style="flex: 1; margin-left: 15px;">
+                <h3>Lisa Chen</h3>
+                <p>Suggested as: <strong>Lead Designer</strong></p>
+                <p>Matched tags: Modern, Luxury, Residential</p>
+            </div>
+            <button class="btn btn-success">Assign</button>
+        </div>
+        
+        <div class="team-suggestion">
+            <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/women/66.jpg');"></div>
+            <div style="flex: 1; margin-left: 15px;">
+                <h3>Emma Rodriguez</h3>
+                <p>Suggested as: <strong>Junior Designer</strong></p>
+                <p>Matched tags: Modern, 3D Modeling</p>
+            </div>
+            <button class="btn btn-success">Assign</button>
+        </div>
+        
+        <h2>Project Timeline</h2>
+        
+        <div class="milestone">
+            <div>
+                <h3>Design Concept</h3>
+                <p>Initial sketches and mood boards</p>
+            </div>
+            <div>
+                <p>Deadline: May 1, 2025</p>
+                <p>Assigned to: Lisa Chen</p>
+            </div>
+        </div>
+        
+        <div class="milestone">
+            <div>
+                <h3>3D Rendering</h3>
+                <p>Detailed 3D models of all spaces</p>
+            </div>
+            <div>
+                <p>Deadline: May 15, 2025</p>
+                <p>Assigned to: Emma Rodriguez</p>
+            </div>
+        </div>
+        
+        <div class="milestone">
+            <div>
+                <h3>Material Selection</h3>
+                <p>Final materials and finishes</p>
+            </div>
+            <div>
+                <p>Deadline: May 25, 2025</p>
+                <p>Not yet assigned</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Designer/Contractor Dashboard -->
+    <section id='designer-contractor-dashboard'>
+        <h1>Designer/Contractor Dashboard</h1>
+        
+        <div class="project-card">
+            <h3>Oceanview Residence</h3>
+            <p>Modern beach house renovation - 3,500 sq ft</p>
+            <p class="deadline">Deadline: April 20, 2025 (7 days remaining)</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                <div>
+                    <h4>Current Task: Final Renderings</h4>
+                    <div style="background: #e9ecef; height: 10px; width: 200px; border-radius: 5px; margin-top: 10px;">
+                        <div style="background: #4dabf7; height: 10px; width: 75%; border-radius: 5px;"></div>
+                    </div>
+                    <p>75% Complete</p>
+                </div>
+                <button class="btn btn-primary">Upload Files</button>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <h3>Downtown Office Suite</h3>
+            <p>Corporate office redesign - 2,200 sq ft</p>
+            <p class="deadline">Deadline: May 15, 2025 (32 days remaining)</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                <div>
+                    <h4>Current Task: Concept Boards</h4>
+                    <div style="background: #e9ecef; height: 10px; width: 200px; border-radius: 5px; margin-top: 10px;">
+                        <div style="background: #4dabf7; height: 10px; width: 30%; border-radius: 5px;"></div>
+                    </div>
+                    <p>30% Complete</p>
+                </div>
+                <button class="btn btn-primary">Upload Files</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Recent Feedback</h2>
+            <p><strong>From Project Manager (Yesterday):</strong> "Great attention to detail on the Oceanview kitchen design. The client loved the custom cabinetry proposal."</p>
+            <p><strong>From Client (Apr 10):</strong> "The color palette for the living room is exactly what we envisioned. Looking forward to seeing the final renderings."</p>
+        </div>
+    </section>
+
+    <!-- Contract & Compliance -->
+    <section id='contract-compliance'>
+        <h1>Contract & Compliance</h1>
+        
+        <div class="document-card">
+            <div>
+                <h3>Oceanview Residence NDA</h3>
+                <p>Non-disclosure agreement for client project</p>
+            </div>
+            <div>
+                <span class="status status-green"></span> Signed
+                <p>Expires: Dec 31, 2025</p>
+                <button class="btn btn-primary">View</button>
+            </div>
+        </div>
+        
+        <div class="document-card">
+            <div>
+                <h3>Contractor Agreement - James Wilson</h3>
+                <p>Standard terms for renovation project</p>
+            </div>
+            <div>
+                <span class="status status-red"></span> Pending Signature
+                <p>Sent: Apr 10, 2025</p>
+                <button class="btn btn-primary">View</button>
+            </div>
+        </div>
+        
+        <div class="document-card">
+            <div>
+                <h3>Downtown Office Suite Contract</h3>
+                <p>Service agreement with complete scope of work</p>
+            </div>
+            <div>
+                <span class="status status-green"></span> Signed
+                <p>Expires: Jul 15, 2025</p>
+                <button class="btn btn-primary">View</button>
+            </div>
+        </div>
+        
+        <button class="btn btn-warning" style="margin-top: 15px;">Generate New Contract</button>
+    </section>
+
+    <!-- Payments -->
+    <section id='payments'>
+        <h1>Payments</h1>
+        
+        <div class="invoice-card">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Invoice #1089</h3>
+                    <p>Oceanview Residence - Phase 2 Completion</p>
+                </div>
+                <div class="amount">$12,500</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                <div>
+                    <p>Submitted: Apr 8, 2025</p>
+                    <p><span class="status status-orange"></span> Pending Approval</p>
+                </div>
+                <div>
+                    <button class="btn btn-success">Approve</button>
+                    <button class="btn btn-primary">View Details</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="invoice-card">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Invoice #1085</h3>
+                    <p>Downtown Office Suite - Design Concept</p>
+                </div>
+                <div class="amount">$5,800</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                <div>
+                    <p>Submitted: Apr 2, 2025</p>
+                    <p><span class="status status-green"></span> Approved</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary">View Details</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="invoice-card">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Invoice #1078</h3>
+                    <p>Mountain Retreat - Final Payment</p>
+                </div>
+                <div class="amount">$8,750</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                <div>
+                    <p>Submitted: Mar 25, 2025</p>
+                    <p><span class="status status-green"></span> Paid</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary">View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Management -->
+    <section id='performance-management'>
+        <h1>Performance Management</h1>
+        
+        <div class="performance-card">
+            <h3>Your Performance Metrics</h3>
+            
+            <div>
+                <p>Client Satisfaction</p>
+                <div class="performance-meter">
+                    <div class="performance-value" style="width: 92%;"></div>
+                </div>
+                <p>4.6/5 (92%)</p>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <p>Project Completion On Time</p>
+                <div class="performance-meter">
+                    <div class="performance-value" style="width: 85%;"></div>
+                </div>
+                <p>85%</p>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <p>Budget Adherence</p>
+                <div class="performance-meter">
+                    <div class="performance-value" style="width: 88%;"></div>
+                </div>
+                <p>88%</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Recent Feedback</h3>
+            <p>"Sarah consistently delivers creative designs that exceed client expectations. Her attention to detail and ability to understand client needs is exceptional." - Project Manager</p>
+            <p>"Working with Sarah was a pleasure. She transformed our space into exactly what we envisioned." - Client, Oceanview Residence</p>
+        </div>
+        
+        <div class="card">
+            <h3>Areas for Development</h3>
+            <ul>
+                <li>Advanced 3D rendering techniques</li>
+                <li>Commercial space planning</li>
+                <li>Project budget management</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Training & Development -->
+    <section id='training-development'>
+        <h1>Training & Development</h1>
+        
+        <div class="training-card">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Advanced 3D Visualization Workshop</h3>
+                    <p>Learn the latest techniques in 3D visualization for interior spaces</p>
+                </div>
+                <div style="text-align: right;">
+                    <p>April 25, 2025</p>
+                    <p>1:00 PM - 4:00 PM</p>
+                    <span class="badge badge-blue">Virtual</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 10px;">RSVP</button>
+        </div>
+        
+        <div class="training-card">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Sustainable Materials Masterclass</h3>
+                    <p>Explore eco-friendly materials and their applications in modern design</p>
+                </div>
+                <div style="text-align: right;">
+                    <p>May 8, 2025</p>
+                    <p>10:00 AM - 12:00 PM</p>
+                    <span class="badge badge-green">In-person</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 10px;">RSVP</button>
+        </div>
+        
+        <div class="card">
+            <h3>Your Certificates</h3>
+            <p><strong>Color Theory Masterclass</strong> - Completed Mar 2025</p>
+            <p><strong>Client Communication Workshop</strong> - Completed Jan 2025</p>
+            <p><strong>Interior Design Trends 2025</strong> - Completed Feb 2025</p>
+        </div>
+    </section>
+
+    <!-- Communication & Culture -->
+    <section id='communication-culture'>
+        <h1>Communication & Culture</h1>
+        
+        <div class="card">
+            <h3>Firm Announcements</h3>
+            <p><strong>Apr 12, 2025</strong> - Office will be closed for team building event on April 28.</p>
+            <p><strong>Apr 5, 2025</strong> - Congratulations to Team Oceanview for winning the Regional Design Excellence Award!</p>
+            <p><strong>Mar 30, 2025</strong> - New sustainable materials library now available in the design studio.</p>
+        </div>
+        
+        <h3>Project Chat: Oceanview Residence</h3>
+        <div class="chat-container">
+            <div class="chat-message">
+                <div class="chat-sender">John (Project Manager)</div>
+                <div class="chat-bubble">Team, the client has approved the kitchen concept. We can move forward with detailed drawings.</div>
+            </div>
+            
+            <div class="chat-message chat-self">
+                <div class="chat-sender">You</div>
+                <div class="chat-bubble">That's great news! I'll start working on the detailed plans tomorrow. Should we schedule a team review for Friday?</div>
+            </div>
+            
+            <div class="chat-message">
+                <div class="chat-sender">Maria (Interior Architect)</div>
+                <div class="chat-bubble">Friday works for me. I'll have the structural considerations ready by then.</div>
+            </div>
+            
+            <div class="chat-message">
+                <div class="chat-sender">John (Project Manager)</div>
+                <div class="chat-bubble">Perfect. Friday at 2pm in the main conference room. I'll update the calendar.</div>
+            </div>
+            
+            <div class="chat-message">
+                <div class="chat-sender">Daniel (Contractor)</div>
+                <div class="chat-bubble">I'll bring samples of the cabinet finishes we discussed. The supplier confirmed they're in stock.</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <input type="text" placeholder="Type your message..." style="width: 80%; padding: 10px;">
+            <button class="btn btn-primary">Send</button>
+        </div>
+    </section>
+</body>
+</html>
